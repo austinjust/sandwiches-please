@@ -59,6 +59,7 @@ th {
 #goatpics {
     width: 260px;
     height: 200px;
+    border-radius:50%
 }
 
 /* this was a dumb idea awful code austin, replaced by class=lifeGoals
