@@ -180,6 +180,7 @@ $('#goatCount').click(function () {
         totalGoats -= 10;
         goatIncrement.amount++;
         $('#femaleGoat').removeClass('hidden');
+        $('this').addClass('hidden');
         updateValues();
     }
 });
