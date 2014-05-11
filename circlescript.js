@@ -67,8 +67,7 @@ $('#upgradeTwoClicks').click(function () {
         $(this).addClass('hidden');
         $('#upgradeFiveClicks').removeClass('hidden');
         $('#upgradeTwoAutoClicks').removeClass('hidden');
-        $('.notabs-0').removeClass('hidden');
-        $('.notabs-1').removeClass('hidden');
+        $('.tabs-1').removeClass('hidden');
         updateValues();
     }
 });
