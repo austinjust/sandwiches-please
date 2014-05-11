@@ -1,0 +1,221 @@
+/* if i put $('.button').fade() right here, it takes away the border, which I... kind of like? */
+ .container {
+    padding:5px 30px 30px 30px;
+    margin:30px;
+    border:solid white 1px;
+    border-radius:5px;
+    text-align:center;
+}
+th {
+    font-size: 40px;
+    text-align: center;
+}
+#tabs-min {
+    background: transparent;
+    border: none;
+    font-family:"HelveticaNeue-Light";
+}
+#tabs-min .ui-widget-header {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #c0c0c0;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+#tabs-min .ui-tabs-nav .ui-state-default {
+    background: transparent;
+    border: none;
+}
+#tabs-min .ui-tabs-nav .ui-state-active {
+    background: transparent url(http://keith-wood.name/img/uiTabsArrow.png) no-repeat bottom center;
+    border: none;
+}
+#tabs-min .ui-tabs-nav .ui-state-default a {
+    color: #c0c0c0;
+}
+#tabs-min .ui-tabs-nav .ui-state-active a {
+    color: #459e00;
+}
+#goatpics {
+    width: 260px;
+    height: 200px;
+}
+table img {
+    width: 50px;
+    height: 50px;
+}
+#clock {
+    width:100px height: 150px border-radius: 100px
+}
+#click {
+    border-radius: 100% height: 200%
+}
+#click:active {
+    position:relative;
+    top:1px;
+}
+.circle {
+    -moz-box-shadow:inset 0px -1px 0px 0px #bee2f9;
+    -webkit-box-shadow:inset 0px -1px 0px 0px #bee2f9;
+    box-shadow:inset 0px -1px 0px 0px #bee2f9;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #63b8ee), color-stop(1, #468ccf));
+    background:-moz-linear-gradient(center top, #63b8ee 5%, #468ccf 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#63b8ee', endColorstr='#468ccf');
+    background-color:#63b8ee;
+    -webkit-border-top-left-radius:42px;
+    -moz-border-radius-topleft:42px;
+    border-top-left-radius:42px;
+    -webkit-border-top-right-radius:42px;
+    -moz-border-radius-topright:42px;
+    border-top-right-radius:42px;
+    -webkit-border-bottom-right-radius:42px;
+    -moz-border-radius-bottomright:42px;
+    border-bottom-right-radius:42px;
+    -webkit-border-bottom-left-radius:42px;
+    -moz-border-radius-bottomleft:42px;
+    border-bottom-left-radius:42px;
+    text-indent:0px;
+    border:1px solid #3866a3;
+    display:inline-block;
+    color:#14396a;
+    font-family:Arial Black;
+    font-size:16px;
+    font-weight:bold;
+    font-style:normal;
+    height:75px;
+    line-height:75px;
+    width:75px;
+    text-decoration:none;
+    text-align:center;
+    text-shadow:1px 1px 0px #7cacde;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.circle:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #468ccf), color-stop(1, #63b8ee));
+    background:-moz-linear-gradient(center top, #468ccf 5%, #63b8ee 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#468ccf', endColorstr='#63b8ee');
+    background-color:#468ccf;
+}
+.circle:active {
+    position:relative;
+    top:1px;
+    text-decoration:none;
+}
+.futon {
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+    background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+    background-image: -o-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    -webkit-border-radius: 60;
+    -moz-border-radius: 60;
+    border-radius: 50px;
+    text-shadow: 1px 1px 3px #666666;
+    -webkit-box-shadow: 0px 1px 3px #666666;
+    -moz-box-shadow: 0px 1px 3px #666666;
+    box-shadow: 0px 1px 3px #666666;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    text-align:center;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+.futon:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+}
+/*i want to get rid of the blue outline
+input[type="button"]{
+   outline:none;
+}
+input[type="button"]::-moz-focus-inner {
+   border: 0;
+}
+*/
+
+/* Create the animation blocks */
+ @keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* Spinning, gradient circle; CSS only! */
+ #advanced {
+    width: 200px;
+    height: 200px;
+    background-image: -moz-radial-gradient(45px 45px 45deg, circle cover, yellow 0%, orange 100%, red 95%);
+    background-image: -webkit-radial-gradient(45px 45px, circle cover, yellow, orange);
+    background-image: radial-gradient(45px 45px 45deg, circle cover, yellow 0%, orange 100%, red 95%);
+    animation-name: spin;
+    animation-duration: 3s;
+    /* 3 seconds */
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.trick {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    /* width and height can be anything, as long as they're equal */
+}
+.goatCircle {
+    -moz-box-shadow: 0px 1px 0px 0px #1c1b18;
+    -webkit-box-shadow: 0px 1px 0px 0px #1c1b18;
+    box-shadow: 0px 1px 0px 0px #1c1b18;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eae0c2), color-stop(1, #ccc2a6));
+    background:-moz-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+    background:-webkit-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+    background:-o-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+    background:-ms-linear-gradient(top, #eae0c2 5%, #ccc2a6 100%);
+    background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eae0c2', endColorstr='#ccc2a6', GradientType=0);
+    background-color:#eae0c2;
+    -moz-border-radius:42px;
+    -webkit-border-radius:42px;
+    border-radius:50%;
+    border:2px solid #333029;
+    display:inline-block;
+    cursor:pointer;
+    color:#505739;
+    font-family:Verdana;
+    font-size:28px;
+    font-weight:bold;
+    padding:26px 14px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #ffffff;
+    width: 200px;
+    height: 200px;
+    text-align:center;
+}
+.goatCircle:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ccc2a6), color-stop(1, #eae0c2));
+    background:-moz-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+    background:-webkit-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+    background:-o-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+    background:-ms-linear-gradient(top, #ccc2a6 5%, #eae0c2 100%);
+    background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ccc2a6', endColorstr='#eae0c2', GradientType=0);
+    background-color:#ccc2a6;
+    text-decoration:none;
+}
+.goatCircle:active {
+    position:relative;
+    top:1px;
+    text-decoration:none;
+}
