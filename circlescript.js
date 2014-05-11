@@ -124,19 +124,22 @@ $('#upgradeGoats').click(function () {
         totalClicks -= 500;
         clickIncrement = 5;
         $(this).addClass('hidden');
-        $('#upgradeTiger').removeClass('hidden');
-        $('#upgradeBagh').removeClass('hidden');
         $('#goatCount').removeClass('hidden');
         $('.allClicks').addClass('hidden');
         $('.allGoats').removeClass('hidden');
         $('#autoClickerBuy').addClass('hidden');
         $('#hrpics').removeClass('hidden');
         $('#goatpics').removeClass('hidden');
-        $('.notabs-1').removeClass('hidden');
+        $('.notabs-2').removeClass('hidden');
         updateValues();
     }
 });
 
+/* I don't need tigers yet for testing 
+ $('#upgradeTiger').removeClass('hidden');
+        $('#upgradeBagh').removeClass('hidden');
+        
+        
 $('#upgradeTiger').click(function () {
     if (totalClicks >= 1000) {
         totalClicks -= 1000;
@@ -154,6 +157,7 @@ $('#upgradeBagh').click(function () {
         updateValues();
     }
 });
+*/
 
 /* Don't think this does anything
 $('#goatCount').click(function(){
