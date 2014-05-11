@@ -20,6 +20,7 @@ html {
     background: transparent;
     border: none;
     font-family:"HelveticaNeue-Light";
+    color: #c0c0c0
 }
 #tabs-min .ui-widget-header {
     background: transparent;
@@ -34,7 +35,7 @@ html {
     border: none;
 }
 #tabs-min .ui-tabs-nav .ui-state-active {
-    background: transparent url(http://keith-wood.name/img/uiTabsArrow.png) no-repeat bottom center;
+    background: transparent url(/pix/uiTabsArrow.png) no-repeat bottom center;
     border: none;
 }
 #tabs-min .ui-tabs-nav .ui-state-default a {
