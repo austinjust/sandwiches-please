@@ -7,7 +7,7 @@ var spaceBall = 0
 spaceBall.appear = function (); {
 			var me=l('spaceBall');
 			me.body.style.backgroundPosition='0px 0px';*/
-			me.body.style.backgroundImage='url('http://orteil.dashnet.org/cookieclicker/img/goldCookie.png')';
+			me.body.style.backgroundImage='url('orteil.dashnet.org/cookieclicker/img/goldCookie.png')';
 			//
 			// moon http://i.imgur.com/CL3apkv.png
 			//FUCK IT'S THE MOON OKAY
@@ -27,7 +27,7 @@ spaceBall.appear = function (); {
 				//this.time=0;
 				//this.toDie=0;
 			}
-			
+/*
 			
 			Goats.Chiever = function(what)
         {
@@ -54,3 +54,5 @@ spaceBall.appear = function (); {
                 }
             }
         }
+        
+*/
