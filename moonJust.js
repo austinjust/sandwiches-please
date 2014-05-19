@@ -5,9 +5,29 @@
 //Game.fps = 30;
 //Game.l = l('game');
 
+function l(what) {return document.getElementById(what);}
+
 var spaceBall = 0
 
-spaceBall.appear = function ();
+spaceBall.appear = function (); {
+			var me=l('moon');
+			me.style.backgroundPosition='0px 0px';*/
+			me.style.background='url(moonjust.png)';
+			var screen=l('game').getBoundingClientRect();
+			this.x=Math.floor(Math.random()*Math.max(0,(screen.right-300)-screen.left-128)+screen.left+64)-64;
+			this.y=Math.floor(Math.random()*Math.max(0,screen.bottom-screen.top-128)+screen.top+64)-64;
+			me.style.left=this.x+'px';
+			me.style.top=this.y+'px';
+			me.style.display='block';
+			//how long will it stay on-screen?
+			var dur=13;
+			if (Life.Has('Lucky day')) dur*=2;
+			if (Life.Has('Serendipity')) dur*=2;
+			if (this.chain>0) dur=Math.max(1,10/this.chain);//this is hilarious
+			this.dur=dur;
+			this.life=Math.ceil(Life.fps*this.dur);
+			this.time=0;
+			this.toDie=0;
 
 
 Game.moonClicks = 0;
@@ -66,57 +86,11 @@ Life.moon.reset=function()
 
 		Game.moon.spawn=function()
 		{
-			if (this.time<this.minTime || this.life>0) Life.Win('Cheated cookies taste awful');
-			
 			var me=l('moon');
 			me.style.backgroundPosition='0px 0px';*/
 			me.style.background='url(moonjust.png)';
-			//I DONT DO ELDER WRATHS HERE
-			/*			
-			if ((Life.elderWrath==1 && Math.random()<1/3) || (Life.elderWrath==2 && Math.random()<2/3) || (Life.elderWrath==3))
-			{
-				this.wrath=1;
-				if (Life.season=='halloween') me.style.background='url(img/spookyCookie.png)';
-				else me.style.background='url(img/wrathCookie.png)';
-			}
 			
-			else
-			{
-				this.wrath=0;
-				me.style.background='url(img/goldCookie.png)';
-			}
-			*/
 		
-			//fancy visual stuff
-			
-			/* DONT NEED ROTATE EITHER
-			var r=Math.floor(Math.random()*360);
-			*/
-			// no seasons either DUMMY	
-			/*
-			if (Life.season=='halloween' && this.wrath) r=Math.floor(Math.random()*36-18);
-			if (Life.season=='valentines')
-			{
-				me.style.background='url(img/hearts.png)';
-				me.style.backgroundPosition=-(Math.floor(Math.random()*8)*96)+'px 0px';
-				r=Math.floor(Math.random()*36-18);
-				if (this.wrath) r+=180;
-			}
-			if (Life.season=='fools')
-			{
-				me.style.background='url(img/contract.png)';
-				r=Math.floor(Math.random()*8-4);
-				if (this.wrath) me.style.background='url(img/wrathContract.png)';
-			}
-			*/
-			//NO ROTATE
-			/*
-			me.style.transform='rotate('+r+'deg)';
-			me.style.mozTransform='rotate('+r+'deg)';
-			me.style.webkitTransform='rotate('+r+'deg)';
-			me.style.msTransform='rotate('+r+'deg)';
-			me.style.oTransform='rotate('+r+'deg)';
-			*/
 			
 			var screen=l('life').getBoundingClientRect();
 			this.x=Math.floor(Math.random()*Math.max(0,(screen.right-300)-screen.left-128)+screen.left+64)-64;
@@ -139,8 +113,6 @@ Life.moon.reset=function()
 			if (this.toDie==0 && this.life<=0 && Math.random()<Math.pow(Math.max(0,(this.time-this.minTime)/(this.maxTime-this.minTime)),5)) this.spawn();
 			if (this.life>0)
 			{
-				if (!Life.Has('Golden switch')) this.life--;
-				
 				l('moon').style.opacity=1-Math.pow((this.life/(Life.fps*this.dur))*2-1,4);
 				if (this.life==0 || this.toDie==1)
 				{
@@ -210,7 +182,7 @@ Life.moon.reset=function()
 				var popup=0;
 				//MoonPowers
 				
-				if (choice!='chain cookie') me.chain=0;
+				
 				if (choice=='frenzy')
 				{
 					var time=77+77*Life.Has('Get lucky');
@@ -220,85 +192,8 @@ Life.moon.reset=function()
 					Life.recalculateGains=1;
 					popup=['Frenzy : cookie production x7 for '+time+' seconds!','Frenzy','Cookie production <b>x7</b> for <b>'+time+'</b> seconds!'];
 				}
-				else if (choice=='multiply cookies')
-				{
-					var moni=Math.min(Life.cookies*0.1,Life.cookiesPs*60*20)+13;//add 10% to cookies owned (+13), or 20 minutes of cookie production - whichever is lowest
-					Life.Earn(moni);
-					popup=['Lucky! +'+Beautify(moni)+' cookies!','Lucky!','+<b>'+Beautify(moni)+'</b> cookies!'];
-				}
-				else if (choice=='ruin cookies')
-				{
-					var moni=Math.min(Game.cookies*0.05,Game.cookiesPs*60*10)+13;//lose 5% of cookies owned (-13), or 10 minutes of cookie production - whichever is lowest
-					moni=Math.min(Game.cookies,moni);
-					Game.Spend(moni);
-					popup=['Ruin! Lost '+Beautify(moni)+' cookies!','Ruin!','Lost <b>'+Beautify(moni)+'</b> cookies!'];
-				}
-				else if (choice=='blood frenzy')
-				{
-					var time=6+6*Game.Has('Get lucky');
-					Game.frenzy=Game.fps*time;//*2;//we shouldn't need *2 but I keep getting reports of it lasting only 3 seconds
-					Game.frenzyPower=666;
-					Game.frenzyMax=Game.frenzy;
-					Game.recalculateGains=1;
-					popup=['Elder frenzy : cookie production x666 for '+time+' seconds!','Elder frenzy','Cookie production <b>x666</b> for <b>'+time+'</b> seconds!'];
-				}
-				else if (choice=='clot')
-				{
-					var time=66+66*Game.Has('Get lucky');
-					Game.frenzy=Game.fps*time;
-					Game.frenzyPower=0.5;
-					Game.frenzyMax=Game.frenzy;
-					Game.recalculateGains=1;
-					popup=['Clot : cookie production halved for '+time+' seconds!','Clot','Cookie production <b>halved</b> for <b>'+time+'</b> seconds!'];
-				}
-				else if (choice=='click frenzy')
-				{
-					var time=13+13*Game.Has('Get lucky');
-					Game.clickFrenzy=Game.fps*time;
-					Game.clickFrenzyMax=Game.clickFrenzy;
-					Game.recalculateGains=1;
-					popup=['Click frenzy! Clicking power x777 for '+time+' seconds!','Click frenzy','Clicking power <b>x777</b> for <b>'+time+'</b> seconds!'];
-				}
-				else if (choice=='chain cookie')
-				{
-					me.chain++;
-					var digit='7';
-					if (me.wrath) digit='6';
-					var moni='';
-					for (var i=0;i<Math.max(0,(Game.cookies.toString().length)-10);i++) {moni+=digit;}
-					for (var i=0;i<me.chain;i++) {moni+=digit;}
-					moni=parseFloat(moni);
-					moni=Math.max(parseInt(digit),Math.min(Math.min(Game.cookiesPs*60*60*3,Game.cookies*0.25),moni));
-					var nextMoni='';
-					for (var i=0;i<Math.max(0,(Game.cookies.toString().length)-10);i++) {nextMoni+=digit;}
-					for (var i=0;i<=me.chain;i++) {nextMoni+=digit;}//there's probably a better way to handle this but ah well
-					nextMoni=parseFloat(nextMoni);
-					var moniStr=Beautify(moni);
-					if ((Math.random()<0.01 || nextMoni>=Game.cookies*0.25 || nextMoni>Game.cookiesPs*60*60*3) && me.chain>4)//break the chain if we're above 5 digits AND it's more than 25% of our bank, it grants more than 3 hours of our CpS, or just a 1% chance each digit
-					{
-						me.chain=0;
-						popup=['Cookie chain : +'+moniStr+' cookies!<br>Cookie chain over.','Cookie chain over','+<b>'+moniStr+'</b> cookies!'];
-					}
-					else popup=['Cookie chain : +'+moniStr+' cookies!','Cookie chain','+<b>'+moniStr+'</b> cookies!'];
-					Game.Earn(moni);
-				}
-				else if (choice=='blab')//sorry (it's really rare)
-				{
-					var str=choose([
-					'Cookie crumbliness x3 for 60 seconds!',
-					'Chocolatiness x7 for 77 seconds!',
-					'Dough elasticity halved for 66 seconds!',
-					'Golden cookie shininess doubled for 3 seconds!',
-					'World economy halved for 30 seconds!',
-					'Grandma kisses 23% stingier for 45 seconds!',
-					'Thanks for clicking!',
-					'Fooled you! This one was just a test.',
-					'Golden cookies clicked +1!',
-					'Your click has been registered. Thank you for your cooperation.',
-					'Thanks! That hit the spot!'
-					]);
-					popup=[str,'???',str];
-				}
+				
+				
 				
 				if (popup!=0)
 				{

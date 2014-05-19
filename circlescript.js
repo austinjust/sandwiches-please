@@ -131,7 +131,6 @@ $('#upgradeGoats').click(function () {
         $('#hrpics').removeClass('hidden');
         $('#goatpics').removeClass('hidden');
         $('.notabs-2').removeClass('hidden');
-        $('.notabs-3').removeClass('hidden');
         updateValues();
     }
 });
@@ -300,6 +299,16 @@ Class('hidden');
         updateValues();
     }
 });
+
+var tigersRawr = function () {
+	if (goatSecondIncrement>=200) {
+		$('.notabs-3').removeClass('hidden');
+		updateValues();
+		}
+	};
+	
+tigersRawr();
+		 
 
 /* k right now its deleting by 9 by the blue one, and not going over 10. must be whatever -= means. 
 $('#tits').removeClass('hidden'); for later
