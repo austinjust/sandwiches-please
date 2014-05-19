@@ -8,7 +8,7 @@ spaceBall.appear = function (); {
 			var me=l('spaceBall');
 			me.body.style.backgroundPosition='0px 0px';*/
 			me.body.style.backgroundImage='url('moonjust.png')';
-			me.body.width=50px
+			me.body.width=50px;
 			//
 			// moon http://i.imgur.com/CL3apkv.png
 			//FUCK IT'S THE MOON OKAY
