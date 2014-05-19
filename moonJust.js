@@ -1,4 +1,11 @@
 //MOON POWERS
+//UGH AUSTIN COME ON START SLOWER. First: Have a moon even appear. Second. Make it go away. Then worry about clicks etc.
+//Game.T = 0;
+//Game.drawT = 0;
+//Game.fps = 30;
+//Game.l = l('game');
+
+
 Game.moonClicks = 0;
 
 Life.moon={
@@ -53,19 +60,19 @@ Life.moon.reset=function()
 //MoonEnd
 
 
-		Game.goldenCookie.spawn=function()
+		Game.moon.spawn=function()
 		{
-			if (this.time<this.minTime || this.life>0) Game.Win('Cheated cookies taste awful');
+			if (this.time<this.minTime || this.life>0) Life.Win('Cheated cookies taste awful');
 			
-			var me=l('goldenCookie');
+			var me=l('moon');
 			me.style.backgroundPosition='0px 0px';*/
-			me.style.background='url(img/goldCookie.png)';
+			me.style.background='url(moonjust.png)';
 			//I DONT DO ELDER WRATHS HERE
 			/*			
-			if ((Game.elderWrath==1 && Math.random()<1/3) || (Game.elderWrath==2 && Math.random()<2/3) || (Game.elderWrath==3))
+			if ((Life.elderWrath==1 && Math.random()<1/3) || (Life.elderWrath==2 && Math.random()<2/3) || (Life.elderWrath==3))
 			{
 				this.wrath=1;
-				if (Game.season=='halloween') me.style.background='url(img/spookyCookie.png)';
+				if (Life.season=='halloween') me.style.background='url(img/spookyCookie.png)';
 				else me.style.background='url(img/wrathCookie.png)';
 			}
 			
@@ -83,15 +90,15 @@ Life.moon.reset=function()
 			*/
 			// no seasons either DUMMY	
 			/*
-			if (Game.season=='halloween' && this.wrath) r=Math.floor(Math.random()*36-18);
-			if (Game.season=='valentines')
+			if (Life.season=='halloween' && this.wrath) r=Math.floor(Math.random()*36-18);
+			if (Life.season=='valentines')
 			{
 				me.style.background='url(img/hearts.png)';
 				me.style.backgroundPosition=-(Math.floor(Math.random()*8)*96)+'px 0px';
 				r=Math.floor(Math.random()*36-18);
 				if (this.wrath) r+=180;
 			}
-			if (Game.season=='fools')
+			if (Life.season=='fools')
 			{
 				me.style.background='url(img/contract.png)';
 				r=Math.floor(Math.random()*8-4);
@@ -107,7 +114,7 @@ Life.moon.reset=function()
 			me.style.oTransform='rotate('+r+'deg)';
 			*/
 			
-			var screen=l('game').getBoundingClientRect();
+			var screen=l('life').getBoundingClientRect();
 			this.x=Math.floor(Math.random()*Math.max(0,(screen.right-300)-screen.left-128)+screen.left+64)-64;
 			this.y=Math.floor(Math.random()*Math.max(0,screen.bottom-screen.top-128)+screen.top+64)-64;
 			me.style.left=this.x+'px';
@@ -115,67 +122,67 @@ Life.moon.reset=function()
 			me.style.display='block';
 			//how long will it stay on-screen?
 			var dur=13;
-			if (Game.Has('Lucky day')) dur*=2;
-			if (Game.Has('Serendipity')) dur*=2;
+			if (Life.Has('Lucky day')) dur*=2;
+			if (Life.Has('Serendipity')) dur*=2;
 			if (this.chain>0) dur=Math.max(1,10/this.chain);//this is hilarious
 			this.dur=dur;
-			this.life=Math.ceil(Game.fps*this.dur);
+			this.life=Math.ceil(Life.fps*this.dur);
 			this.time=0;
 			this.toDie=0;
 		}
-		Game.goldenCookie.update=function()
+		Life.moon.update=function()
 		{
 			if (this.toDie==0 && this.life<=0 && Math.random()<Math.pow(Math.max(0,(this.time-this.minTime)/(this.maxTime-this.minTime)),5)) this.spawn();
 			if (this.life>0)
 			{
-				if (!Game.Has('Golden switch')) this.life--;
+				if (!Life.Has('Golden switch')) this.life--;
 				
-				l('goldenCookie').style.opacity=1-Math.pow((this.life/(Game.fps*this.dur))*2-1,4);
+				l('moon').style.opacity=1-Math.pow((this.life/(Life.fps*this.dur))*2-1,4);
 				if (this.life==0 || this.toDie==1)
 				{
 					if (this.life==0) this.chain=0;
-					l('goldenCookie').style.display='none';
-					if (this.toDie==0) Game.missedGoldenClicks++;
+					l('moon').style.display='none';
+					if (this.toDie==0) Life.missedGoldenClicks++;
 					this.toDie=0;
 					this.life=0;
 				}
 			}
 			else this.time++;
 		}
-		Game.goldenCookie.choose=function()
+		Life.moon.choose=function()
 		{
 			var list=[];
 			if (this.wrath>0) list.push('clot','multiply cookies','ruin cookies');
 			else list.push('frenzy','multiply cookies');
 			if (this.wrath>0 && Math.random()<0.3) list.push('blood frenzy','chain cookie');
-			else if (Math.random()<0.03 && Game.cookiesEarned>=100000) list.push('chain cookie');
+			else if (Math.random()<0.03 && Life.cookiesEarned>=100000) list.push('chain cookie');
 			if (Math.random()<0.1) list.push('click frenzy');
 			if (this.last!='' && Math.random()<0.8 && list.indexOf(this.last)!=-1) list.splice(list.indexOf(this.last),1);//80% chance to force a different one
 			if (Math.random()<0.0001) list.push('blab');
 			var choice=choose(list);
 			return choice;
 		}
-		Game.goldenCookie.click=function()
+		Life.moon.click=function()
 		{
-			var me=Game.moon;
+			var me=Life.moon;
 			if (me.life>0)
 			{
 				me.toDie=1;
-				Game.moonClicks++;
+				Life.moonClicks++;
 				
-				if (Game.moonClicks>=1) Game.Win('I see the moon');
-				if (Game.moonClicks>=12) Game.Win('Year of the Goat');
-				if (Game.moonClicks>=60) Game.Win('Five Years');
+				if (Life.moonClicks>=1) Life.Win('I see the moon');
+				if (Life.moonClicks>=12) Life.Win('Year of the Goat');
+				if (Life.moonClicks>=60) Life.Win('Five Years');
 				if 
 				
-				if (Game.goldenClicks>=77) Game.Win('Fortune');
-				if (Game.goldenClicks>=777) Game.Win('Leprechaun');
-				if (Game.goldenClicks>=7777) Game.Win('Black cat\'s paw');
+				if (Life.goldenClicks>=77) Life.Win('Fortune');
+				if (Life.goldenClicks>=777) Life.Win('Leprechaun');
+				if (Life.goldenClicks>=7777) Life.Win('Black cat\'s paw');
 				
 				//change to goldenClicksLocal later
-				if (Game.goldenClicks>=12) Game.Unlock('And the moon sees me!');
-				if (Game.goldenClicks>=27) Game.Unlock('Year of the Goat');
-				if (Game.goldenClicks>=77) Game.Unlock('Five Years');
+				if (Life.goldenClicks>=12) Life.Unlock('And the moon sees me!');
+				if (Life.goldenClicks>=27) Life.Unlock('Year of the Goat');
+				if (Life.goldenClicks>=77) Life.Unlock('Five Years');
 				
 				//'I see the moon' (and the moon sees me)
 				//if you believe they put a man on the moon REMlyrics?
@@ -189,7 +196,7 @@ Life.moon.reset=function()
 				//Dark Side
 				
 				
-				l('goldenCookie').style.display='none';
+				l('moon').style.display='none';
 				
 				var choice=me.choose();
 				
@@ -202,17 +209,17 @@ Life.moon.reset=function()
 				if (choice!='chain cookie') me.chain=0;
 				if (choice=='frenzy')
 				{
-					var time=77+77*Game.Has('Get lucky');
-					Game.frenzy=Game.fps*time;
-					Game.frenzyPower=7;
-					Game.frenzyMax=Game.frenzy;
-					Game.recalculateGains=1;
+					var time=77+77*Life.Has('Get lucky');
+					Life.frenzy=Life.fps*time;
+					Life.frenzyPower=7;
+					Life.frenzyMax=Life.frenzy;
+					Life.recalculateGains=1;
 					popup=['Frenzy : cookie production x7 for '+time+' seconds!','Frenzy','Cookie production <b>x7</b> for <b>'+time+'</b> seconds!'];
 				}
 				else if (choice=='multiply cookies')
 				{
-					var moni=Math.min(Game.cookies*0.1,Game.cookiesPs*60*20)+13;//add 10% to cookies owned (+13), or 20 minutes of cookie production - whichever is lowest
-					Game.Earn(moni);
+					var moni=Math.min(Life.cookies*0.1,Life.cookiesPs*60*20)+13;//add 10% to cookies owned (+13), or 20 minutes of cookie production - whichever is lowest
+					Life.Earn(moni);
 					popup=['Lucky! +'+Beautify(moni)+' cookies!','Lucky!','+<b>'+Beautify(moni)+'</b> cookies!'];
 				}
 				else if (choice=='ruin cookies')
@@ -299,7 +306,7 @@ Life.moon.reset=function()
 				me.maxTime=me.getMaxTime();
 			}
 		}
-		l('goldenCookie')[Game.clickStr]=Game.goldenCookie.click;
+		l('moon')[Life.clickStr]=Life.moon.click;
 		
 		//Game.clickStr=Game.touchEvents?'ontouchend':'onclick';
 		
