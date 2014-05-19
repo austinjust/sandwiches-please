@@ -5,6 +5,10 @@
 //Game.fps = 30;
 //Game.l = l('game');
 
+var spaceBall = 0
+
+spaceBall.appear = function ();
+
 
 Game.moonClicks = 0;
 

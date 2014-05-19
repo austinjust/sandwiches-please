@@ -10,7 +10,7 @@ var totalClicks = 0,
     },
     totalGoats = 1,
     goatIncrement = 1,
-    goatSecondIncrement=2
+    goatSecondIncrement=2,
     tick = 1000;
 
 /* Run the AutoClicker */
@@ -183,6 +183,8 @@ $('#goatCount').click(function () {
         goatIncrement.amount++;
         $('#femaleGoat').removeClass('hidden');
         $(this).addClass('hidden');
+        // why is this here...
+        /*
         $('this').addfunction damageClick(e){
 	damage += swordPower*bonusDPS;
 	evoPoints += swordPower*bonusDPS/damageToEvo;
@@ -293,6 +295,8 @@ $('#goatCount').click(function () {
 
 };
 Class('hidden');
+
+*/
         updateValues();
     }
 });
