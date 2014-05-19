@@ -300,16 +300,17 @@ Class('hidden');
     }
 });
 
-//NOPE TIGERS DIDNT WORK DARn WAIT CHECK THE INCREMENT VS COUNT
+//NOPE TIGERS DIDNT WORK DARN STILL NOT WORKING
+/*
 var tigersRawr = function () {
-	if (totalGoats>=200) {
+	if (totalGoats>=50) {
 		$('.notabs-3').removeClass('hidden');
 		updateValues();
 		}
 	};
 	
 tigersRawr();
-		 
+*/		 
 
 /* k right now its deleting by 9 by the blue one, and not going over 10. must be whatever -= means. 
 $('#tits').removeClass('hidden'); for later
