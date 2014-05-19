@@ -34,7 +34,9 @@ function updateValues() {
     $('#total_clicks').html(totalClicks);
     $('#autoClickers').html(autoClicker.amount);
     $('#total_goats').html(totalGoats);
-    $('#spaceBall').html(moonCounter);
+    //$('#spaceBall').html(moonCounter);
+    
+    //LOL this turns the moon into a 0
 }
 
 /* Buy AutoClickers */
