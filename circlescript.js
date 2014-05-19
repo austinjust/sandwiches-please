@@ -12,7 +12,7 @@ var totalClicks = 0,
     goatIncrement = 1,
     goatSecondIncrement=2,
     tick = 1000,
-    moonCounter = 0;
+    //moonCounter = 0;
 
 /* Run the AutoClicker */
 var runAutoClicker = setInterval(function () {
