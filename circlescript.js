@@ -11,7 +11,8 @@ var totalClicks = 0,
     totalGoats = 1,
     goatIncrement = 1,
     goatSecondIncrement=2,
-    tick = 1000;
+    tick = 1000,
+    moonCounter = 0;
 
 /* Run the AutoClicker */
 var runAutoClicker = setInterval(function () {
@@ -23,12 +24,17 @@ $('#goatCount').click(function () {
     totalGoats++;
     document.getElementById("total_goats").innerHTML = totalGoats;
 });
-
+/*
+$('#spaceBall').click(function () {
+    moonCounter++;
+    document.getElementById("total_goats").innerHTML = totalGoats;
+*/
 /*Update All Values*/
 function updateValues() {
     $('#total_clicks').html(totalClicks);
     $('#autoClickers').html(autoClicker.amount);
     $('#total_goats').html(totalGoats);
+    $('#spaceBall').html(moonCounter);
 }
 
 /* Buy AutoClickers */
