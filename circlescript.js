@@ -300,8 +300,9 @@ Class('hidden');
     }
 });
 
+//NOPE TIGERS DIDNT WORK DARn WAIT CHECK THE INCREMENT VS COUNT
 var tigersRawr = function () {
-	if (goatSecondIncrement>=200) {
+	if (totalGoats>=200) {
 		$('.notabs-3').removeClass('hidden');
 		updateValues();
 		}
