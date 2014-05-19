@@ -10,6 +10,7 @@ var totalClicks = 0,
     },
     totalGoats = 1,
     goatIncrement = 1,
+    goatSecondIncrement=2
     tick = 1000;
 
 /* Run the AutoClicker */
@@ -171,7 +172,8 @@ $('#goatCount').click(function(){
 
 /*GOATS NOW */
 $('#femaleGoat').click(function () {
-    totalGoats += goatIncrement;
+    totalGoats += goatSecondIncrement;
+    goatSecondIncrement.amount++;
     updateValues();
 });
 
@@ -180,7 +182,117 @@ $('#goatCount').click(function () {
         totalGoats -= 10;
         goatIncrement.amount++;
         $('#femaleGoat').removeClass('hidden');
-        $('this').addClass('hidden');
+        $(this).addClass('hidden');
+        $('this').addfunction damageClick(e){
+	damage += swordPower*bonusDPS;
+	evoPoints += swordPower*bonusDPS/damageToEvo;
+	statDmgSword += swordPower*bonusDPS;
+	statSwordSwings += 1;
+	
+	if (statSwordSwings >= 1000 && achieve015got === 0) { 
+		achieve015got = 1;
+		achievementsCheck();
+		achieveText();
+	};
+	if (statSwordSwings >= 50000 && achieve016got === 0) { 
+		achieve016got = 1;
+		achievementsCheck();
+		achieveText();
+	};
+	if (statSwordSwings >= 250000 && achieve017got === 0) { 
+		achieve017got = 1;
+		achievementsCheck();
+		achieveText();
+	};
+	if (statSwordSwings >= 25000000 && achieve018got === 0) { 
+		achieve018got = 1;
+		achievementsCheck();
+		achieveText();
+	};
+	
+	statDmgAllTime += swordPower*bonusDPS;
+	statEvoAllTime += swordPower*bonusDPS/damageToEvo;
+	statEvoGame += swordPower*bonusDPS/damageToEvo;
+	
+	document.getElementById('damage').innerHTML = numberWithCommas(Math.floor(damage)) + "<br />" + "Damage";
+	document.getElementById('evoPoints').innerHTML = numberWithCommas(Math.floor(evoPoints)) + " Evo Points";
+	
+	var e = e || window.event;
+	
+	var x = e.pageX-10-Math.floor(Math.random()*6);
+	var y = e.pageY-25;
+	
+	var w = e.pageX;
+	var z = e.pageY;
+	
+	damDiv++;
+	makeNumber(damDiv);
+	
+	function makeNumber(i) {
+		var damageNumber = document.createElement("div");
+		beastButton.appendChild(damageNumber);
+		
+		damageNumber.setAttribute("id", "damageNumber"+i);
+		$('#damageNumber'+i).addClass( "damageNumber" );
+		$('#damageNumber'+i).css('left',x+'px');
+		$('#damageNumber'+i).css('top',y+'px');
+			
+		document.getElementById('damageNumber'+i).innerHTML = numberWithCommas(Math.floor(swordPower*bonusDPS));
+		
+		function damNumTransition() {
+			$('#damageNumber'+i).css('left',x+'px');
+			$('#damageNumber'+i).css('top',y-128+'px');
+			$('#damageNumber'+i).css('opacity','0');
+		};
+		
+		function deleteDamDiv() {
+			this.remove();
+		};
+			
+		window.setTimeout(damNumTransition, 10);
+		
+		document.getElementById("damageNumber"+i).addEventListener("transitionend", deleteDamDiv, true);
+	};
+	
+	particleDiv++;
+	makeParticle(particleDiv);
+	
+	function makeParticle(p) {
+		var particle = document.createElement("div");
+		beastButton.appendChild(particle);
+		
+		particle.setAttribute("id", "particle"+p);
+		$('#particle'+p).addClass( "particle" );
+		$('#particle'+p).css('width',Math.floor(Math.random()*10)+5+'px');
+		$('#particle'+p).css('height',Math.floor(Math.random()*10)+5+'px');
+		$('#particle'+p).css('left',w+'px');
+		$('#particle'+p).css('top',z+'px');
+		
+		function particleTransition() {
+			$('#particle'+p).css('left',w+Math.floor(Math.random() * 201) - 100+'px');
+			$('#particle'+p).css('top',z+Math.floor(Math.random() * 201) - 100+'px');
+			$('#particle'+p).css('opacity','0');
+		};
+		
+		function deleteParticle() {
+			this.remove();
+		};
+			
+		window.setTimeout(particleTransition, 10);
+		
+		document.getElementById("particle"+p).addEventListener("transitionend", deleteParticle, true);
+	};
+	
+	if (damage >= 25) {
+		if (boughtSword_01_a === 0 && unlockedSword_01_a === 0) {
+			unlockedSword_01_a = 1;
+			unlockedUpgrades();
+		};
+
+	};
+
+};
+Class('hidden');
         updateValues();
     }
 });
