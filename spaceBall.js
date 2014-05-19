@@ -5,9 +5,9 @@ function l(what) {return document.getElementById(what);}
 var spaceBall = 0
 
 spaceBall.appear = function (); {
-			var me=l('spaceBall');
+			var me=l('#spaceBall');
 			me.style.backgroundPosition='0px 0px';*/
-			me.style.background='url(moonjust.png)';
+			me.style.background='url(/moonjust.png)';
 			//var screen=l('game').getBoundingClientRect(); okay what is
 			//this.x=Math.floor(Math.random()*Math.max(0,(screen.right-300)-screen.left-128)+screen.left+64)-64;
 			//this.y=Math.floor(Math.random()*Math.max(0,screen.bottom-screen.top-128)+screen.top+64)-64;
