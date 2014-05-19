@@ -7,7 +7,9 @@ var spaceBall = 0
 spaceBall.appear = function (); {
 			var me=l('spaceBall');
 			me.body.style.backgroundPosition='0px 0px';*/
-			me.body.style.backgroundImage='url('http://i.imgur.com/CL3apkv.png')';
+			me.body.style.backgroundImage='url('http://orteil.dashnet.org/cookieclicker/img/goldCookie.png')';
+			//
+			// moon http://i.imgur.com/CL3apkv.png
 			//FUCK IT'S THE MOON OKAY
 			//var screen=l('game').getBoundingClientRect(); okay what is
 			//this.x=Math.floor(Math.random()*Math.max(0,(screen.right-300)-screen.left-128)+screen.left+64)-64;
@@ -25,3 +27,30 @@ spaceBall.appear = function (); {
 				//this.time=0;
 				//this.toDie=0;
 			}
+			
+			
+			Goats.Chiever = function(what)
+        {
+            if (typeof what === 'string')
+            {
+                if (Life.Achievements[what])
+                {
+                    if (Life.Achievements[what].won == 0)
+                    {
+                        Life.Achievements[what].won = 1;
+                        if (Life.prefs.popups) 
+                            Life.Popup('Achievement Unlocked :<br>' + Life.Achievements[what].name);
+                        else 
+                            Life.Notify('Achievement Unlocked', '<div class="title" style="font-size:18px;">' + Life.Achievements[what].name + '</div>', Life.Achievements[what].icon);
+                        //DONT HAVE HIDDEN ONES [SHADOW ACHIEVERS?
+                        //if (Life.Achievements[what].hide != 3) 
+                            Life.AchievementsOwned++;
+                        Life.recalculateGains = 1;
+                    }
+                }
+            } else {
+                for (var i in what) {
+                    Life.Win(what[i]);
+                }
+            }
+        }
