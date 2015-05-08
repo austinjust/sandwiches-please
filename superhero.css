@@ -45,16 +45,9 @@ html {
     color: #398fff;
 }
 
-#spaceBall {
-	width: 50px;
-	height: 50px;
-	display: block;
-	}
-
 .lifeGoals img {
  	width: 50px;
     height: 50px;
-    display: block;
     }
     
 #goatpics {
